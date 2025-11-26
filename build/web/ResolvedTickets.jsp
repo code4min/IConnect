@@ -101,7 +101,7 @@
             ResultSet rs = null;
             try{
                 Class.forName("com.mysql.jdbc.Driver");
-                conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","root","admin");
+                conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","db_name","db_pass");
                 String query = "Select t.tID, t.subject,t.Resolution_DateTime, a.username AS assignedTo from TICKET t INNER JOIN AGENTS a ON t.Agent = a.agentID where TicketStatus='CLOSED' AND  uID=?";
                 pstmt=conn.prepareStatement(query);
                 pstmt.setString(1, userID);

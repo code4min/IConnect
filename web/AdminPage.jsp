@@ -26,7 +26,7 @@
     
     try{
         Class.forName("com.mysql.jdbc.Driver");
-        conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","root","admin");
+        conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","db_name","db_pass");
         
         String totalCountQuery = "SELECT COUNT(*) AS total FROM TICKET";
         pstmt = conn.prepareStatement(totalCountQuery);

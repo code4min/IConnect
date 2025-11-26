@@ -19,7 +19,7 @@
         try {
             // Establish database connection
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT", "root", "admin");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT", "db_name", "db_pass");
             
             // Update ticket details for each ticket ID
             for (String ticketID : ticketIDs) {

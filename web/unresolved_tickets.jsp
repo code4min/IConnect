@@ -132,7 +132,7 @@
     ResultSet rs = null;
     try{
         Class.forName("com.mysql.jdbc.Driver");
-        conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","root","admin");
+        conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","db_name","db_pass");
         pstmt = conn.prepareStatement("SELECT t.tID,t.tType,t.TicketStatus,t.Priority, t.subject,u.username AS createdBy, a.username AS assignedTo FROM TICKET t JOIN USERS u ON t.uID = u.userID JOIN AGENTS a ON t.Agent = a.agentID WHERE t.TicketStatus <>'CLOSED' ORDER BY tID DESC ");
         rs = pstmt.executeQuery();
         while (rs.next()) {

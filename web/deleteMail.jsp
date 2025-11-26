@@ -18,7 +18,7 @@
         try {
             // Establish database connection
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT", "root", "admin");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT", "db_name", "db_pass");
             
             // Prepare SQL query to retrieve ticket details
             String query = "Delete from MAIL where message_id = ?";
@@ -42,7 +42,7 @@
         } else if ("agent".equals(redirect)) {
             response.sendRedirect("AContact.jsp?mailDel=true");
         }
-        else if ("admin".equals(redirect)) {
+        else if ("db_pass".equals(redirect)) {
             response.sendRedirect("Contact3.jsp?mailDel=true");
         }else {
             // Default redirect if 'redirect' is not recognized

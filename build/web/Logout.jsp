@@ -11,7 +11,7 @@
         session = request.getSession(false);
         // Store the current datetime using timestamp in the 'logoutDateTime' column of the LOGS table
         if (accountID != null) {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","root","admin");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","db_name","db_pass");
 
             // Update the LOGS table with logout datetime
             String sql = "UPDATE LOGS SET logoutDateTime = ? WHERE accountID = ? AND loginDateTime = (SELECT MAX(loginDateTime) FROM LOGS WHERE accountID = ?)";

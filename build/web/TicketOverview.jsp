@@ -171,7 +171,7 @@
             ResultSet rs = null;
             try{
                 Class.forName("com.mysql.jdbc.Driver");
-                conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","root","admin");
+                conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","db_name","admin");
                 String query = "SELECT tID, username, subject, Priority, TicketStatus, Creation_Date FROM TICKET t INNER JOIN USERS u ON t.uID = u.userID where Agent=?";
                 pstmt=conn.prepareStatement(query);
                 pstmt.setString(1, agentID);

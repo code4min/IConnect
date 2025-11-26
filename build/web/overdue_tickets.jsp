@@ -247,7 +247,7 @@
     ResultSet rs = null;
     try{
         Class.forName("com.mysql.jdbc.Driver");
-        conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","root","admin");
+        conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","db_name","admin");
         pstmt = conn.prepareStatement("SELECT t.tID,t.tType,t.TicketStatus,t.Priority, t.Agent, t.subject,u.username AS createdBy, a.username AS assignedTo FROM TICKET t JOIN USERS u ON t.uID = u.userID JOIN AGENTS a ON t.Agent = a.agentID WHERE t.due_date < CURDATE() ORDER BY tID DESC ");
         rs = pstmt.executeQuery();
         while (rs.next()) {

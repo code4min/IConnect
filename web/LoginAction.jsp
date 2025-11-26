@@ -15,7 +15,7 @@
     ResultSet rs=null;
     try{
         Class.forName("com.mysql.jdbc.Driver");
-        conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","root","admin");
+        conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","db_name","db_pass");
         String query="";
         String accountType = ""; // Variable to store the account type
     String accountID = "";
@@ -28,9 +28,9 @@
                 query="Select * FROM AGENTS WHERE username=? AND password=?";
                 accountType = "agent";
                 break;
-            case "admin":
+            case "db_pass":
                 query="Select * FROM ADMIN WHERE username=? AND password=?";
-                accountType = "admin";
+                accountType = "db_pass";
                 break;
             default:
                 out.println("Invalid login Type");
@@ -66,7 +66,7 @@
                 session.setAttribute("agentID", accountID);
                 response.sendRedirect("AgentPage.jsp");
                 break;
-            case "admin":
+            case "db_pass":
                 session.setAttribute("adminID", accountID);
                 response.sendRedirect("AdminPage.jsp");
                 break;

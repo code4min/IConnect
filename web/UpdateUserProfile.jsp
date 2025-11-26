@@ -24,7 +24,7 @@
     try {
         // Connect to the database
         Class.forName("com.mysql.jdbc.Driver");
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT", "root", "admin");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT", "db_name", "db_pass");
 
         // Update the admin profile
         String sql = "UPDATE USERS SET username=?, password=?, Email=? WHERE userID=?";

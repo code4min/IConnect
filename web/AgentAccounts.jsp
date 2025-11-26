@@ -240,7 +240,7 @@
     ResultSet rs = null;
     try{
         Class.forName("com.mysql.jdbc.Driver");
-        conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","root","admin");
+        conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","db_name","db_pass");
         pstmt = conn.prepareStatement("SELECT a.agentID, a.username, a.Email, a.password, d.deptname FROM AGENTS a INNER JOIN DEPARTMENTS d ON a.deptID = d.deptID;");
         rs = pstmt.executeQuery();
         while (rs.next()) {

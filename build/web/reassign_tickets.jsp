@@ -14,7 +14,7 @@ String agentId = request.getParameter("agentId");
 
 if (ticketIdsString != null && agentId != null) {
     try {
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT", "root", "admin");
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT", "db_name", "db_pass");
         String[] ticketIds = ticketIdsString.split(",");
         PreparedStatement pstmt = conn.prepareStatement("UPDATE TICKET SET Agent = ? WHERE tID = ?");
 

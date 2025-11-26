@@ -301,7 +301,7 @@ function storeCheckedMessageIDs() {
             ResultSet rs=null;
             try{
                         Class.forName("com.mysql.jdbc.Driver");
-                        conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","root","admin");
+                        conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","db_name","db_pass");
                         String query = "SELECT * from MAIL WHERE sender_id=? OR receiver_id=? ORDER BY sent_date DESC";
                         pstmt=conn.prepareStatement(query);
                         pstmt.setString(1, adminID);
@@ -345,7 +345,7 @@ function storeCheckedMessageIDs() {
             <select id="receiver_type" name="receiver_type">
                 <option value="user">User</option>
                 <option value="agent">Agent</option>
-                <option value="admin">Admin</option>
+                <option value="db_pass">Admin</option>
             </select><br><br>
             <label for="subject">Subject:</label> &nbsp;
             <input type="text" id="subject" name="subject" placeholder="Enter subject"><br><br>

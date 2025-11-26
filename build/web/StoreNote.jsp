@@ -24,7 +24,7 @@ try {
     Class.forName("com.mysql.jdbc.Driver");
     
     // Establish a connection to the database
-    conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT", "root", "admin");
+    conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT", "db_name", "db_pass");
     
     // Create a PreparedStatement with the SQL query
     PreparedStatement statement = conn.prepareStatement(sql);

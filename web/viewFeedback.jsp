@@ -80,7 +80,7 @@
                 try {
                     // Establish database connection
                     Class.forName("com.mysql.jdbc.Driver");
-                    conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT", "root", "admin");
+                    conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT", "db_name", "db_pass");
                     
                     // Prepare SQL query to fetch feedback details based on ticket IDs
                     String query = "SELECT f.ticketID, f.feedback, f.created_at, t.subject, t.Resolution_DateTime FROM FEEDBACK f INNER JOIN TICKET t ON f.ticketID=t.tID WHERE feedbackID IN (";

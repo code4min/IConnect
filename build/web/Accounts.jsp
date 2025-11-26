@@ -26,7 +26,7 @@
 
     try {
         Class.forName("com.mysql.jdbc.Driver");
-        conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","root","admin");
+        conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","db_name","db_pass");
         
         String responseTimeQuery = "SELECT TIMESTAMPDIFF(MINUTE, Creation_Date, Resolution_DateTime) AS response_time FROM TICKET WHERE Resolution_DateTime IS NOT NULL";
         pstmt = conn.prepareStatement(responseTimeQuery);

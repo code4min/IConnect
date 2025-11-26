@@ -15,7 +15,7 @@
     PreparedStatement pstmt=null;
     try{
         Class.forName("com.mysql.jdbc.Driver");
-        conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","root","admin");
+        conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","db_name","db_pass");
         String agentDepartment = "";
         String selectAgentQuery = "SELECT agentID FROM AGENTS WHERE deptID = ? ORDER BY RAND() LIMIT 1";
         PreparedStatement selectAgentStmt = conn.prepareStatement(selectAgentQuery);

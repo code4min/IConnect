@@ -27,7 +27,7 @@
     try {
         // Obtain database connection
         Class.forName("com.mysql.jdbc.Driver");
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT", "root", "admin");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT", "db_name", "db_pass");
         
         String userEmailQuery = "SELECT Email FROM USERS WHERE userID = ?";
         pstmt = conn.prepareStatement(userEmailQuery);

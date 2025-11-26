@@ -33,7 +33,7 @@
     try {
         // Connect to the database
         Class.forName("com.mysql.jdbc.Driver");
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT", "root", "admin");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT", "db_name", "db_pass");
 
         // Retrieve admin profile data from the database
         String sql = "SELECT username, password, email FROM ADMIN WHERE adminID = ?";

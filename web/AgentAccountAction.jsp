@@ -22,7 +22,7 @@
     PreparedStatement pstmt=null;
     try{
         Class.forName("com.mysql.jdbc.Driver");
-        conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","root","admin");
+        conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","db_name","db_pass");
         pstmt=conn.prepareStatement("Insert into AGENTS (username, Email, password, deptID,Registration_DateTime) values(?,?,?,?,CURRENT_TIMESTAMP)");
         pstmt.setString(1,username);
         pstmt.setString(2,email);

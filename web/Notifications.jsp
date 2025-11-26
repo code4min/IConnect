@@ -69,7 +69,7 @@
         ResultSet rs = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT", "root", "admin");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT", "db_name", "db_pass");
             stmt = conn.createStatement();
             rs = stmt.executeQuery("SELECT * FROM NOTIFICATIONS");
             while (rs.next()) {

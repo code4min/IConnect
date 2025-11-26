@@ -16,7 +16,7 @@
 
     try{
         Class.forName("com.mysql.jdbc.Driver");
-        conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","root","admin");
+        conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","db_name","db_pass");
         pstmt=conn.prepareStatement("Insert into NOTIFICATIONS (agentID, ticketID, message) values(?,?,?)");
         pstmt.setString(1,selectedAgentID);
         pstmt.setString(2,selectedTicketID);

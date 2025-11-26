@@ -28,7 +28,7 @@
     try {
         // Obtain database connection
         Class.forName("com.mysql.jdbc.Driver");
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT", "root", "admin");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT", "db_name", "db_pass");
         
         String agentEmailQuery = "SELECT Email FROM AGENTS WHERE agentID = ?";
         pstmt = conn.prepareStatement(agentEmailQuery);
@@ -43,7 +43,7 @@
         String userIdQuery = "";
         if ("user".equals(receiverType)) {
             userIdQuery = "SELECT userID FROM USERS WHERE Email = ?";
-        } else if ("admin".equals(receiverType)) {
+        } else if ("db_pass".equals(receiverType)) {
             userIdQuery = "SELECT adminID FROM ADMIN WHERE Email = ?";
         } else {
             throw new SQLException("Invalid receiver type: " + receiverType);

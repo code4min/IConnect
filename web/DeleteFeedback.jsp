@@ -17,7 +17,7 @@ if (feedbackIDs != null && feedbackIDs.length > 0) {
     PreparedStatement pstmt = null;
     try {
         Class.forName("com.mysql.jdbc.Driver");
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT", "root", "admin");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT", "db_name", "db_pass");
         // Prepare SQL statement to delete records from REPORT table
         String deleteQuery = "DELETE FROM FEEDBACK WHERE feedbackID = ?";
         pstmt = conn.prepareStatement(deleteQuery);

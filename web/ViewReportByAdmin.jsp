@@ -95,7 +95,7 @@
             String reportID = request.getParameter("reportID");
 
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT", "root", "admin");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT", "db_name", "db_pass");
 
             pstmt = conn.prepareStatement("SELECT * FROM REPORT WHERE reportID = ?");
             pstmt.setString(1, reportID);

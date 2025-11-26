@@ -15,8 +15,8 @@
 
     // Database connection parameters
     String url = "jdbc:mysql://localhost:3306/HDT";
-    String username = "root";
-    String password = "admin";
+    String username = "db_name";
+    String password = "db_pass";
 
     // Database connection and query initialization
     Connection conn = null;

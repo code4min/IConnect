@@ -74,7 +74,7 @@
         ResultSet rs = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","root","admin");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","db_name","db_pass");
             
             for (String ticketID : ticketIDs) {
                 // Retrieve ticket details
@@ -280,7 +280,7 @@
         // Insert report content into the REPORT table
         try {
             
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","root","root");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","db_name","db_name");
             String insertQuery = "INSERT INTO REPORT (report, agentID, ticketID) VALUES (?, ?, ?)";
             pstmt = conn.prepareStatement(insertQuery);
             pstmt.setString(1, reportContent.toString());

@@ -162,7 +162,7 @@
             ResultSet rs = null;
             try{
                 Class.forName("com.mysql.jdbc.Driver");
-                conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","root","admin");
+                conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","db_name","db_pass");
                 String query = "Select * from FEEDBACK where userID=?";
                 pstmt=conn.prepareStatement(query);
                 pstmt.setString(1, userID);

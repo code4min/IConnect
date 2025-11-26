@@ -18,7 +18,7 @@
     PreparedStatement pstmt=null;
     try{
         Class.forName("com.mysql.jdbc.Driver");
-        conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","root","admin");
+        conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","db_name","db_pass");
         pstmt=conn.prepareStatement("Insert into DEPARTMENTS (deptname) values(?)");
         pstmt.setString(1,deptname);
         int rowCount = pstmt.executeUpdate();
