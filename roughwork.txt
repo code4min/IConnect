@@ -1,0 +1,196 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.sql.*" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ticket Resolution Analysis</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    
+    <style>
+        .high-priority { background-color: red; }
+        .medium-priority { background-color: orange; }
+        .low-priority { background-color: pink; }
+        .task-bar { display: none; }
+    </style>
+    <script>
+        function TaskBar() {
+            var checkBoxes = document.querySelectorAll('input[type="checkbox"]');
+            var taskBar = document.getElementById('taskbar2');
+            
+            var anyChecked = false;
+            checkBoxes.forEach(function(checkbox) {
+                if (checkbox.checked) {
+                    anyChecked = true;
+                }
+            });
+
+            if (anyChecked) {
+                taskBar.style.display = 'block';
+            } else {
+                taskBar.style.display = 'none';
+            }
+        }
+   </script>
+</head>
+<body>
+    <h2>Ticket Resolution Analysis</h2>
+    
+    <%-- Establish database connection --%>
+    <% 
+       String agentID = (String) session.getAttribute("agentID");
+       
+       Connection conn = null;
+       PreparedStatement stmt = null;
+       ResultSet rs = null;
+       try {
+           Class.forName("com.mysql.jdbc.Driver");
+           conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/HDT","root","root");
+           String query = "SELECT * FROM TICKET where TicketStatus = 'CLOSED' AND Agent=?";
+           stmt=conn.prepareStatement(query);
+           stmt.setString(1, agentID);
+           rs = stmt.executeQuery();
+    %>
+    <div id="taskbar2" class="taskbar2">
+        <button onclick="openReport()">View Report</button>
+        <button onclick="deleteReport()">Delete Report</button>
+        <br><br>
+    </div>
+    <%-- Display analysis report in a table --%>
+    <table>
+        <thead>
+            <tr>
+                <th>Select</th>
+                <th>Ticket ID</th>
+                <th>Subject</th>
+                <th>Priority</th>
+              
+            </tr>
+        </thead>
+        <tbody>
+            <% while (rs.next()) { 
+            String priority = rs.getString("Priority");
+                    String priorityClass = "";
+                    if ("high".equals(priority)) {
+                        priorityClass = "high-priority";
+                    } else if ("medium".equals(priority)) {
+                        priorityClass = "medium-priority";
+                    } else if ("low".equals(priority)) {
+                        priorityClass = "low-priority";
+                    }
+            %>
+            <tr>
+                <td><input type="checkbox" name="ReportCheckbox" onchange="TaskBar()"></td>
+                <td><%= rs.getString("tID") %></td>
+                <td><%= rs.getTimestamp("subject") %></td>
+                <td class="<%= priorityClass %>"></td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+        <script>
+            function openReport() {
+            var checkedCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+        
+        
+            var ticketIDs = [];
+            checkedCheckboxes.forEach(function(checkbox) {
+                ticketIDs.push(checkbox.parentNode.nextElementSibling.textContent); // Assuming Ticket ID is in the next cell
+            });
+            var agentID = '<%= session.getAttribute("agentID") %>';
+        
+            if (ticketIDs.length > 0) {
+                window.location.href = 'Report.jsp?agentID=' + agentID + '&ticketIDs=' + ticketIDs.join(',');
+            } else {
+                alert('Please select at least one report to open.');
+            }
+        }
+        function deleteTicket() {
+            var checkedCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+        
+        
+            var ticketIDs = [];
+            checkedCheckboxes.forEach(function(checkbox) {
+                ticketIDs.push(checkbox.parentNode.nextElementSibling.textContent); // Assuming Ticket ID is in the next cell
+            });
+
+        
+            if (ticketIDs.length > 0) {
+                window.location.href = 'DeleteReport.jsp?ticketIDs=' + ticketIDs.join(',');
+            } else {
+                alert('Please select at least one report to open.');
+            }
+        }
+        </script>
+    <%-- Close database resources --%>
+    <% } catch (Exception e) {
+           e.printStackTrace();
+    } finally {
+           try {
+               if (rs != null) rs.close();
+               if (stmt != null) stmt.close();
+               if (conn != null) conn.close();
+           } catch (SQLException ex) {
+               ex.printStackTrace();
+           }
+    } %>
+    
+</body>
+</html>
+
+
+
+
+
+
+function toggleBar(){
+            var checkBoxes = document.querySelectorAll('input[type="checkbox"]');
+            var buttonBar = document.getElementById('buttonbar1');
+            
+            var anyChecked = false;
+            checkBoxes.forEach(function(checkbox) {
+                if (checkbox.checked) {
+                    anyChecked = true;
+                }
+            });
+
+            if (anyChecked) {
+                buttonBar.style.display = 'block';
+            } else {
+                buttonBar.style.display = 'none';
+            }
+        }
+
+
+
+color dark:#009B7F
+color light: #C9E1BF
+#99ccff  #97CB82
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

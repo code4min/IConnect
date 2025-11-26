@@ -1,0 +1,59 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : 30-Mar-2024, 4:44:49 pm
+    Author     : Sneha
+*/
+            .title{
+                background-color: #FF455B; 
+                color: white;
+                font-family: sans-serif;
+                font-size: 26px;
+                font-weight: bold;
+                height: 70px;
+                text-align: center; /* horizontally center */
+                line-height: 70px;
+                position: relative; 
+            }
+        
+            .slide-menu-container {
+                position: fixed;
+                top: 0;
+                left: -250px;
+                width: 250px;
+                height: 100%;
+                background-color: black;
+                transition: left 0.3s ease;
+                overflow-x: hidden;
+                padding-top: 60px;
+            }
+            .slide-menu a {
+              padding: 10px 20px;
+              display: block;
+              color: white;
+              text-decoration: none;
+              transition: background-color 0.3s;
+            }
+            .slide-menu a:hover {
+                background-color: #cccccc;
+                color:black;
+            }
+            .graph-content {
+              transition: margin-left 0.3s;
+              padding: 16px;
+              margin-left: 0;
+            }
+            .menu-btn {
+                position: absolute;  
+                left: 10px; 
+                top: 50%; 
+                transform: translateY(-50%);
+                cursor: pointer;
+                z-index: 999;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 26px;
+            }
